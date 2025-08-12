@@ -176,27 +176,19 @@ export const analyzePrompt = async (prompt: string): Promise<PromptAnalysis> => 
 }
 
 export const getSeverityColor = (severity: string) => {
-  switch (severity) {
-    case "high":
-      return "border-red-200 bg-red-50"
-    case "medium":
-      return "border-yellow-200 bg-yellow-50"
-    case "low":
-      return "border-blue-200 bg-blue-50"
-    default:
-      return "border-gray-200 bg-gray-50"
-  }
+  // Use consistent styling for all severity levels
+  return "border-border bg-card"
 }
 
 export const getSeverityBadgeColor = (severity: string) => {
   switch (severity) {
     case "high":
-      return "bg-red-200 text-red-800 border-red-300"
+      return "bg-destructive text-destructive-foreground border-destructive"
     case "medium":
-      return "bg-yellow-200 text-yellow-800 border-yellow-300"
+      return "bg-primary text-primary-foreground border-primary"
     case "low":
-      return "bg-blue-200 text-blue-800 border-blue-300"
+      return "bg-muted text-muted-foreground border-muted-foreground"
     default:
-      return "bg-gray-200 text-gray-800 border-gray-300"
+      return "bg-muted text-muted-foreground border-border"
   }
 }

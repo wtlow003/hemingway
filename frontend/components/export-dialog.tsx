@@ -48,13 +48,13 @@ export function ExportDialog({ open, onOpenChange, content, formatId }: ExportDi
             {getIcon(selectedFormat.iconName, "h-5 w-5")}
             EXPORT_AS_{selectedFormat.name.toUpperCase().replace(/\s+/g, "_")}
           </DialogTitle>
-          <DialogDescription className="text-sm text-gray-600 font-mono">
+          <DialogDescription className="text-sm text-muted-foreground font-mono">
             {selectedFormat.description}
           </DialogDescription>
         </DialogHeader>
 
         <div className="flex-1 overflow-hidden">
-          <div className="h-[500px] overflow-auto rounded-lg border border-gray-200">
+          <div className="h-[500px] overflow-auto rounded-lg border border-border">
             <SyntaxHighlighter
               language={selectedFormat.language || "text"}
               style={oneDark}
@@ -70,8 +70,8 @@ export function ExportDialog({ open, onOpenChange, content, formatId }: ExportDi
           </div>
         </div>
 
-        <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-          <div className="text-xs text-gray-500 font-mono">
+        <div className="flex items-center justify-between pt-4 border-t border-border">
+          <div className="text-xs text-muted-foreground font-mono">
             {content.split("\n").length} lines • {content.length} characters
           </div>
           <div className="flex gap-2">
@@ -81,7 +81,7 @@ export function ExportDialog({ open, onOpenChange, content, formatId }: ExportDi
                   variant="outline"
                   size="sm"
                   onClick={handleCopy}
-                  className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-black font-mono text-xs"
+                  className="border-border text-foreground hover:bg-accent hover:text-accent-foreground font-mono text-xs"
                 >
                   <Copy className="h-4 w-4 mr-2" />
                   COPY
@@ -97,7 +97,7 @@ export function ExportDialog({ open, onOpenChange, content, formatId }: ExportDi
                   variant="outline"
                   size="sm"
                   onClick={handleDownload}
-                  className="border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-black font-mono text-xs"
+                  className="border-border text-foreground hover:bg-accent hover:text-accent-foreground font-mono text-xs"
                 >
                   <Download className="h-4 w-4 mr-2" />
                   DOWNLOAD

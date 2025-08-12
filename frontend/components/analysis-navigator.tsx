@@ -15,14 +15,14 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
     {
       id: "instructions",
       title: "EXTRACTED_INSTRUCTIONS",
-      icon: <FileSearch className="h-4 w-4 text-black" />,
+      icon: <FileSearch className="h-4 w-4 text-foreground" />,
       content: analysis.extractedInstructions,
     },
     {
       id: "general",
       title: "GENERAL_ISSUES",
       icon: (
-        <svg className="h-5 w-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
         </svg>
       ),
@@ -32,7 +32,7 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
       id: "contradiction",
       title: "CONTRADICTION_ISSUES",
       icon: (
-        <svg className="h-5 w-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728L5.636 5.636m12.728 12.728L18.364 5.636M5.636 18.364l12.728-12.728" />
         </svg>
       ),
@@ -42,7 +42,7 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
       id: "format",
       title: "FORMAT_ISSUES",
       icon: (
-        <svg className="h-5 w-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="h-5 w-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
@@ -72,15 +72,15 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
   const renderInstructions = () => (
     <div className="space-y-4">
       {analysis.extractedInstructions.map((instruction) => (
-        <div key={instruction.id} className="border border-gray-300 rounded-lg p-4 bg-white">
-          <h4 className="text-sm font-mono font-bold text-black uppercase">
+        <div key={instruction.id} className="border border-border rounded-lg p-4 bg-card">
+          <h4 className="text-sm font-mono font-bold text-foreground uppercase">
             INSTRUCTION_{instruction.id.split("-")[1].padStart(2, "0")}: {instruction.title}
           </h4>
           <div className="mb-1">
-            <span className="text-sm font-mono text-gray-600">EXTRACTED_TEXT:</span>
+            <span className="text-sm font-mono text-muted-foreground">EXTRACTED_TEXT:</span>
           </div>
-          <div className="rounded-md p-4 bg-gray-200">
-            <p className="text-sm font-mono text-black leading-relaxed">
+          <div className="rounded-md p-4 bg-muted">
+            <p className="text-sm font-mono text-foreground leading-relaxed">
               {instruction.extractedText}
             </p>
           </div>
@@ -92,14 +92,14 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
   const renderIssues = (issues: any[]) => (
     <div className="space-y-4">
       {issues.length === 0 ? (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center justify-center">
-          <span className="text-sm sm:text-base font-mono text-green-700 font-medium">Perfect! No issues in this category.</span>
+        <div className="bg-card border border-border rounded-lg p-4 flex items-center justify-center">
+          <span className="text-sm sm:text-base font-mono text-muted-foreground font-medium">Perfect! No issues in this category.</span>
         </div>
       ) : (
         issues.map((issue) => (
-          <div key={issue.id} className={`border-2 rounded-xl p-4 ${getSeverityColor(issue.severity)}`}>
+          <div key={issue.id} className={`border rounded-lg p-4 ${getSeverityColor(issue.severity)}`}>
             <div className="flex items-start justify-between mb-1">
-              <h4 className="text-sm font-mono font-bold text-black uppercase">
+              <h4 className="text-sm font-mono font-bold text-foreground uppercase">
                 ISSUE_{issue.id.split("-")[2].padStart(2, "0")}: {issue.title.toUpperCase()}
               </h4>
               <span className={`px-3 py-1 text-xs font-mono font-bold rounded-md ${getSeverityBadgeColor(issue.severity)}`}>
@@ -109,26 +109,26 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
             <div className="space-y-2">
               <div>
                 <div className="mb-1">
-                  <span className="text-sm font-mono text-gray-600">SNIPPET:</span>
+                  <span className="text-sm font-mono text-muted-foreground">SNIPPET:</span>
                 </div>
-                <div className="bg-gray-100 rounded-lg p-4 border">
-                  <p className="text-sm font-mono text-black leading-relaxed">{issue.snippet}</p>
-                </div>
-              </div>
-              <div>
-                <div className="mb-1">
-                  <span className="text-sm font-mono text-gray-600">EXPLANATION:</span>
-                </div>
-                <div className="bg-gray-100 rounded-lg p-4 border">
-                  <p className="text-sm font-mono text-black leading-relaxed">{issue.explanation}</p>
+                <div className="bg-muted rounded-lg p-4 border border-border">
+                  <p className="text-sm font-mono text-foreground leading-relaxed">{issue.snippet}</p>
                 </div>
               </div>
               <div>
                 <div className="mb-1">
-                  <span className="text-sm font-mono text-gray-600">SUGGESTION:</span>
+                  <span className="text-sm font-mono text-muted-foreground">EXPLANATION:</span>
                 </div>
-                <div className="bg-gray-100 rounded-lg p-4 border">
-                  <p className="text-sm font-mono text-black leading-relaxed">{issue.suggestion}</p>
+                <div className="bg-muted rounded-lg p-4 border border-border">
+                  <p className="text-sm font-mono text-foreground leading-relaxed">{issue.explanation}</p>
+                </div>
+              </div>
+              <div>
+                <div className="mb-1">
+                  <span className="text-sm font-mono text-muted-foreground">SUGGESTION:</span>
+                </div>
+                <div className="bg-muted rounded-lg p-4 border border-border">
+                  <p className="text-sm font-mono text-foreground leading-relaxed">{issue.suggestion}</p>
                 </div>
               </div>
             </div>
@@ -144,7 +144,7 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           {currentSectionData.icon}
-          <h3 className="text-sm font-medium text-black tracking-tight">
+          <h3 className="text-sm font-medium text-foreground tracking-tight">
             {currentSectionData.title}
           </h3>
         </div>
@@ -154,11 +154,11 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
             size="sm"
             onClick={handlePrevious}
             disabled={!canGoPrevious}
-            className="h-8 w-8 p-0 border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-black disabled:opacity-30"
+            className="h-8 w-8 p-0 border-border text-foreground hover:bg-accent hover:text-foreground disabled:opacity-30"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <span className="text-xs font-mono text-gray-600 mx-2">
+          <span className="text-xs font-mono text-muted-foreground mx-2">
             {currentSection + 1}/{sections.length}
           </span>
           <Button
@@ -166,7 +166,7 @@ export function AnalysisNavigator({ analysis }: AnalysisNavigatorProps) {
             size="sm"
             onClick={handleNext}
             disabled={!canGoNext}
-            className="h-8 w-8 p-0 border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-black disabled:opacity-30"
+            className="h-8 w-8 p-0 border-border text-foreground hover:bg-accent hover:text-foreground disabled:opacity-30"
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
