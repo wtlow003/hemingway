@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RotatingText, ANALYSIS_PHRASES } from "./rotating-text";
 import { AnalysisNavigator } from "./analysis-navigator";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import {
   DropdownMenu,
@@ -87,7 +86,6 @@ export function ResultsView({
             <ArrowLeft className="h-4 w-4 mr-2" />
             NEW PROMPT
           </Button>
-          <ThemeToggle />
         </div>
       </div>
 

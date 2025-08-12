@@ -3,7 +3,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Settings, ArrowRight, History, Info } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern"
 import Image from "next/image"
 import { ModelLogo } from "@/components/model-logo"
@@ -50,7 +49,7 @@ export function InputView({
         numSquares={60}
         maxOpacity={0.05}
         duration={3}
-        repeatDelay={1}
+        repeatDelay={0.5}
         className="fill-gray-400/10 stroke-gray-400/10 skew-y-12"
       />
       {/* Header */}
@@ -66,7 +65,6 @@ export function InputView({
             />
             {/* <h1 className="text-md font-semibold text-foreground tracking-tight">Hemingway</h1> */}
           </div>
-          <ThemeToggle />
         </div>
       </div>
 

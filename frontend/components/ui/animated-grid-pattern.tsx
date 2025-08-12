@@ -26,7 +26,7 @@ export function AnimatedGridPattern({
   strokeDasharray = 0,
   numSquares = 50,
   className,
-  maxOpacity = 0.5,
+  maxOpacity = 0.15,
   duration = 4,
   repeatDelay = 0.5,
   ...props
@@ -121,7 +121,7 @@ export function AnimatedGridPattern({
         </pattern>
         <radialGradient id={`fade-${id}`} cx="50%" cy="50%" r="70%">
           <stop offset="0%" stopColor="white" stopOpacity="1" />
-          <stop offset="70%" stopColor="white" stopOpacity="0.8" />
+          <stop offset="50%" stopColor="white" stopOpacity="0.7" />
           <stop offset="100%" stopColor="white" stopOpacity="0" />
         </radialGradient>
         <mask id={`mask-${id}`}>
