@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
 interface ModelLogoProps {
@@ -15,10 +16,17 @@ interface ModelLogoProps {
 
 export function ModelLogo({ src, alt, width, height, className, provider }: ModelLogoProps) {
   const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  
+  // Ensure theme is only used after hydration
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   
   // Define which providers need inversion in dark mode
   const providersNeedingInversion = ["OpenAI", "Google", "Anthropic", "Moonshot"]
-  const shouldInvert = theme === "dark" && provider && providersNeedingInversion.includes(provider)
+  const shouldInvert = mounted && theme === "dark" && provider && providersNeedingInversion.includes(provider)
+  const shouldApplyBackground = mounted && theme === "dark"
   
   return (
     <Image
@@ -31,7 +39,7 @@ export function ModelLogo({ src, alt, width, height, className, provider }: Mode
         // Apply inversion and brightness adjustments for better visibility in dark mode
         shouldInvert && "invert brightness-0 contrast-100",
         // Add a subtle background for better logo visibility
-        theme === "dark" && "bg-background/10 rounded-sm p-0.5"
+        shouldApplyBackground && "bg-background/10 rounded-sm p-0.5"
       )}
     />
   )

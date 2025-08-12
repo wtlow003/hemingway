@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { RotatingText, ANALYSIS_PHRASES } from "./rotating-text";
 import { AnalysisNavigator } from "./analysis-navigator";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -65,9 +66,16 @@ export function ResultsView({
   const [isDiffOpen, setIsDiffOpen] = useState(false);
 
   return (
-    <div className="bg-background min-h-screen font-mono w-full max-w-full">
+    <div className="bg-background min-h-screen font-mono w-full max-w-full relative">
+      <AnimatedGridPattern
+        numSquares={50}
+        maxOpacity={0.04}
+        duration={4}
+        repeatDelay={1.5}
+        className="fill-gray-400/8 stroke-gray-400/8 -skew-y-12"
+      />
       {/* Header */}
-      <div className="border-b border-border px-2 py-2 sm:px-4 sm:py-3">
+      <div className="border-b border-border px-2 py-2 sm:px-4 sm:py-3 relative z-10">
         <div className="flex items-center justify-between">
           <Button
             variant="outline"
@@ -83,7 +91,7 @@ export function ResultsView({
         </div>
       </div>
 
-      <div className="w-full max-w-full sm:max-w-7xl mx-auto p-2 sm:p-6">
+      <div className="w-full max-w-full sm:max-w-7xl mx-auto p-2 sm:p-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 min-h-[calc(100vh-120px)]">
           {/* Left Panel - Original Prompt */}
           <div className="flex flex-col">

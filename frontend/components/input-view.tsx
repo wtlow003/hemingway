@@ -4,6 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Settings, ArrowRight, History, Info } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern"
 import Image from "next/image"
 import { ModelLogo } from "@/components/model-logo"
 import { models } from "@/lib/constants"
@@ -44,9 +45,16 @@ export function InputView({
 
 
   return (
-    <div className="bg-background min-h-screen w-full max-w-full font-mono flex flex-col overflow-x-hidden overflow-y-auto">
+    <div className="bg-background min-h-screen w-full max-w-full font-mono flex flex-col overflow-x-hidden overflow-y-auto relative">
+      <AnimatedGridPattern
+        numSquares={60}
+        maxOpacity={0.05}
+        duration={3}
+        repeatDelay={1}
+        className="fill-gray-400/10 stroke-gray-400/10 skew-y-12"
+      />
       {/* Header */}
-      <div className="px-2 py-2 sm:px-4 sm:py-2 flex-shrink-0 border-b border-border">
+      <div className="px-2 py-2 sm:px-4 sm:py-2 flex-shrink-0 border-b border-border relative z-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <Image
@@ -63,7 +71,7 @@ export function InputView({
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col justify-center pt-4 pb-4 px-2 sm:pt-8 sm:pb-8 sm:px-6 overflow-x-hidden overflow-y-auto min-h-0 max-h-full">
+      <div className="flex-1 flex flex-col justify-center pt-4 pb-4 px-2 sm:pt-8 sm:pb-8 sm:px-6 overflow-x-hidden overflow-y-auto min-h-0 max-h-full relative z-10">
         <div className="w-full max-w-full sm:max-w-3xl min-w-0 overflow-x-hidden mx-auto">
           <div className="text-center mb-6 flex-shrink-0">
             <div>
