@@ -7,14 +7,14 @@
 
 ## Overview
 
-  The application breaks prompt review into a few focused analysis steps:
+The application breaks prompt review into a few focused analysis steps:
 
 - extract instructions
 - detect general issues
 - find contradictions
 - check structure and formatting
 
-  It can then generate a revised version of the prompt and suggest improvements.
+It can then generate a revised version of the prompt and suggest improvements.
 
 ## Features
 
